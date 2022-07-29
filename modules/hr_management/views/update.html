@@ -1,0 +1,52 @@
+<div class="content-wrapper" ng-controller="HrController" ng-init="show_update()">
+    <div class="row">
+      
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">{{ heading }}</h4>
+            <form class="form-sample" ng-submit="update()">
+                <p class="card-description">
+                    {{ title }}
+                  </p>
+                <div class="row">
+                <div class="col-md-12">
+               
+                    <div class="form-group row" ng-repeat="c in columns track by $index">
+                        <label class="col-sm-3 col-form-label">{{ c.name }}</label>
+
+                        <div ng-if="c.type == 1" class="col-sm-9">
+                            <input type="{{ c.type_name }}" class="form-control" ng-model="record[c.name]" placeholder="{{ c.name }}" ng-required="c.required">
+                        </div>
+                        <div ng-if="c.type == 2" class="col-sm-9">
+                            <select class="form-control" ng-model="record[c.name]" ng-required="c.required">
+                            <option value="" selected>Please Select</option>
+                            <option ng-repeat="o in c.options">{{ o }}</option>
+
+                            </select>
+                        </div>
+
+                    </div>
+              
+                        
+              </div>
+
+            
+               
+              </div>
+              
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <button class="btn btn-primary">Save / Update</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
